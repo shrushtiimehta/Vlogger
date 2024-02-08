@@ -418,7 +418,7 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--config", type=str, default="Vlogger/Vlogger/configs/vlog_read_script_sample.yaml")
+    parser.add_argument("--config", type=str, default="Vlogger/configs/vlog_read_script_sample.yaml")
     args = parser.parse_args()
     omega_conf = OmegaConf.load(args.config)
     save_path = omega_conf.save_path
