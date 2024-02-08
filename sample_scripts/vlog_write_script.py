@@ -3,8 +3,8 @@ import os
 os.environ['CURL_CA_BUNDLE'] = ''
 import argparse
 from omegaconf import OmegaConf
-#from diffusers import StableDiffusionPipeline
-from diffusers import DiffusionPipeline
+from diffusers import StableDiffusionPipeline
+#from diffusers import DiffusionPipeline
 
 story="In a bustling coffee shop, Alice, a young woman with blonde hair and a green apron, prepared to brew coffee. She approached the sleek, silver coffee machine, its buttons gleaming under the shop's warm lights. With practiced ease, she selected the finest beans and filled the grinder, the aroma filling the air. As the machine whirred to life, customers eagerly awaited their favorite brews. With each cup poured, the atmosphere buzzed with caffeine-fueled chatter and the aroma of freshly brewed coffee. Alice's skillful hands and the dependable machine transformed the shop into a haven for coffee lovers, one cup at a time."
 def ExtractProtagonist(story, file_path):
@@ -187,8 +187,11 @@ def main(args):
     print("Time script OK", flush=True)
     
     # make reference image
-    base = DiffusionPipeline.from_pretrained("stabilityai/stable-diffusion-xl-base-1.0",torch_dtype=torch.float16,use_safetensors=True, variant="fp16").to("cuda")
+    #base = DiffusionPipeline.from_pretrained("stabilityai/stable-diffusion-xl-base-1.0",torch_dtype=torch.float16,use_safetensors=True, variant="fp16").to("cuda")
     #refiner = DiffusionPipeline.from_pretrained("stabilityai/stable-diffusion-xl-refiner-1.0", text_encoder_2=base.text_encoder_2,vae=base.vae,torch_dtype=torch.float16,use_safetensors=True,variant="fp16",).to("cuda")
+    model_id = "runwayml/stable-diffusion-v1-5"
+    base = StableDiffusionPipeline.from_pretrained(model_id, torch_dtype=torch.float16).to("cuda")
+
     ref_dir_path = os.path.join(story_path.rsplit('/', 1)[0], "ref_img")
     if not os.path.exists(ref_dir_path):
             os.makedirs(ref_dir_path)
