@@ -2,7 +2,7 @@
 ckpt: "pretrained/ShowMaker.pt"
 pretrained_model_path: "pretrained/CLIP-ViT-H-14-laion2B-s32B-b79K"
 input_path: 'input/i2v/Alice.png'
-save_path: "Vlogger/Vlogger/results/mask_no_ref/"
+save_path: "Vlogger/results/mask_no_ref/"
 
 # model config: 
 model: UNet
