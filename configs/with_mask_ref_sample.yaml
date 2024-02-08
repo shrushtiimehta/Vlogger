@@ -1,10 +1,10 @@
 # path config:
 ckpt: "pretrained/ShowMaker.pt"
-pretrained_model_path: "pretrained/stable-diffusion-v1-4/"
-image_encoder_path: "pretrained/OpenCLIP-ViT-H-14"
-input_path: 'input/i2v/Planet_hits_earth.png'
-ref_path: 'input/i2v/Planet_hits_earth.png'
-save_path: "results/mask_ref/"
+pretrained_model_path: "pretrained/stable-diffusion-v1-4"
+image_encoder_path: "pretrained/CLIP-ViT-H-14-laion2B-s32B-b79K"
+input_path: 'Vlogger/Vlogger/input/i2v/Planet_hits_earth.png'
+ref_path: 'Vlogger/Vlogger/input/i2v/Planet_hits_earth.png'
+save_path: "Vlogger/Vlogger/results/mask_ref/"
 
 # model config: 
 model: UNet
