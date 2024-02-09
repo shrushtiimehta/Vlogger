@@ -83,9 +83,6 @@ def refine_story_scripts(video_list, file_path):
 
 
 def time_scripts(video_list, file_path):
-    try_times = 3
-    for i in range(try_times):
-        try:
             new_video_list = []
             num = 1
             for video in video_list:
@@ -102,10 +99,6 @@ def time_scripts(video_list, file_path):
                 time_list.append(time)
             assert len(time_list) == len(video_list)
             return time_list
-        except:
-            continue
-    assert len(time_list) == len(video_list)
-    return time_list
 
 def readscript(script_file_path):
     with open(script_file_path, "r", encoding='utf-8') as f:
