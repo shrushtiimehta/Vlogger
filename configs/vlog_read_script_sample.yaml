@@ -2,15 +2,15 @@
 ckpt: "pretrained/ShowMaker.pt"
 pretrained_model_path: "pretrained/stable-diffusion-v1-4"
 image_encoder_path: "pretrained/CLIP-ViT-H-14-laion2B-s32B-b79K"
-save_path: "Vlogger/results/vlog/teddy_travel/video"
+save_path: "Vlogger/results/vlog/teddy_travel_/video"
 
 # script path
-reference_image_path: ["Vlogger/results/vlog/teddy_travel/ref_img/teddy.jpg"]
-script_file_path: "Vlogger/results/vlog/teddy_travel/script/video_prompts.txt"
-zh_script_file_path: "Vlogger/results/vlog/teddy_travel/script/zh_video_prompts.txt"
-protagonist_file_path: "Vlogger/results/vlog/teddy_travel/script/protagonists_places.txt"
-reference_file_path: "Vlogger/results/vlog/teddy_travel/script/protagonist_place_reference.txt"
-time_file_path: "Vlogger/results/vlog/teddy_travel/script/time_scripts.txt"
+reference_image_path: ["Vlogger/results/vlog/teddy_travel_/ref_img/teddy.jpg"]
+script_file_path: "Vlogger/results/vlog/teddy_travel_/script/video_prompts.txt"
+zh_script_file_path: "Vlogger/results/vlog/teddy_travel_/script/zh_video_prompts.txt"
+protagonist_file_path: "Vlogger/results/vlog/teddy_travel_/script/protagonists_places.txt"
+reference_file_path: "Vlogger/results/vlog/teddy_travel_/script/protagonist_place_reference.txt"
+time_file_path: "Vlogger/results/vlog/teddy_travel/script_/time_scripts.txt"
 video_transition: False
 
 # model config:
