@@ -121,7 +121,7 @@ def readzhscript(zh_file_path):
 
 
 def readtimescript(time_file_path):
-    with open(time_file_path, "r", encoding='utf-8') as f:
+    with open(time_file_path, "r", encoding='utf-8') as f: 
         time_scripts = f.read()
         time_scripts = ast.literal_eval(time_scripts)
         time_list = []
