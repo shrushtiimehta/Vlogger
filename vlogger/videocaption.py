@@ -29,7 +29,7 @@ def captioning(en_prompt_file, zh_prompt_file, input_video_dir, output_video_dir
     if not os.path.exists(output_video_dir):
         os.makedirs(output_video_dir)
     for i in range(len(video_fnames)):
-        font_zh = ImageFont.truetype(font='MSYH.TTC', size=18)
+        font_zh = ImageFont.truetype(font='Vlogger/MSYH.TTC', size=18)
         fontScale = 0.4
         video_path = os.path.join(input_video_dir, video_fnames[i])
         video = VideoReader(video_path, ctx=cpu(0))
