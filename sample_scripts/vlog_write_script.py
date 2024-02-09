@@ -338,9 +338,7 @@ def time_scripts(video_list, file_path):
             continue
     assert len(time_list) == len(video_list)
     return time_list
-def translate_video_script(video_list, file_path):
-    assert len(video_list) == len(zh_video_list)
-    return zh_video_list
+    
 def readscript(script_file_path):
     with open(script_file_path, "r", encoding='utf-8') as f:
         script = f.read()
