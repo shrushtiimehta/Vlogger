@@ -440,20 +440,22 @@ def main(args):
     print("Time script OK", flush=True)
     
     # make reference image
-    #base = DiffusionPipeline.from_pretrained("stabilityai/stable-diffusion-xl-base-1.0",torch_dtype=torch.float16,use_safetensors=True, variant="fp16").to("cuda")
-    #refiner = DiffusionPipeline.from_pretrained("stabilityai/stable-diffusion-xl-refiner-1.0", text_encoder_2=base.text_encoder_2,vae=base.vae,torch_dtype=torch.float16,use_safetensors=True,variant="fp16",).to("cuda")
-    model_id = "runwayml/stable-diffusion-v1-5"
-    base = StableDiffusionPipeline.from_pretrained(model_id, torch_dtype=torch.float16).to("cuda")
+    base=StableDiffusionPipeline.from_pretrained(model_id, torch_dtype=torch.float16).to("cuda")
 
+    #base = DiffusionPipeline.from_pretrained("stabilityai/stable-diffusion-xl-base-1.0", torch_dtype=torch.float16, variant="fp16", use_safetensors=True,).to("cuda")
+    #refiner = DiffusionPipeline.from_pretrained("stabilityai/stable-diffusion-xl-refiner-1.0",text_encoder_2=base.text_encoder_2,vae=base.vae,torch_dtype=torch.float16,use_safetensors=True,variant="fp16",).to("cuda")
+    
     ref_dir_path = os.path.join(story_path.rsplit('/', 1)[0], "ref_img")
     if not os.path.exists(ref_dir_path):
             os.makedirs(ref_dir_path)
     for key, value in character_places.items():
         prompt = key + ", " + value
         img_path = os.path.join(ref_dir_path, key + ".jpg")
-        image = base(prompt=prompt).images[0]
+        #image = base(prompt=prompt, output_type="latent", height=1024, width=1024, guidance_scale=7).images[0]
         #image = refiner(prompt=prompt, image=image[None, :]).images[0]
-    print("Reference image OK",img_path, flush=True)
+        image = base(prompt=prompt).images[0]
+        image.save(img_path)
+    print("Reference image OK", flush=True)
     
 
 if __name__ == "__main__":
