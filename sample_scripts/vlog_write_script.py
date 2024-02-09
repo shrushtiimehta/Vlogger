@@ -199,9 +199,6 @@ def refine_story_scripts(video_list, file_path):
     return video_list
 
 def translate_video_script(video_list, file_path):
-    try_times = 5
-    for i in range(try_times):
-        try:
             answer = '''[
             {
                 "序号": 1,
@@ -265,11 +262,7 @@ def translate_video_script(video_list, file_path):
                 zh_video_list.append(video_fragment["描述"])
             assert len(video_list) == len(zh_video_list)
             return zh_video_list
-        except:
-            continue
-    assert len(video_list) == len(zh_video_list)
-    return zh_video_list
-
+    
 def time_scripts(video_list, file_path):
     try_times = 3
     for i in range(try_times):
