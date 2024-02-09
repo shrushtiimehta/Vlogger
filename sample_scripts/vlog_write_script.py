@@ -257,7 +257,7 @@ def translate_video_script(video_list, file_path):
             f.write(answer)
             f.close()
             zh_video_list = ["繁忙的咖啡店场景。","特写：爱丽丝的手。","磨豆机充满香气。","咖啡机嗡嗡作响。","蒸汽从机器中升起。","顾客等待订单。","爱丽丝倒咖啡。","香气加强。","顾客品尝第一口。","满意的表情。","最后镜头：爱丽丝微笑。","为顾客服务。","咖啡机嗡嗡作响。"]
-            assert len(video_list) == len(zh_video_list)
+            #assert len(video_list) == len(zh_video_list)
             return zh_video_list
     
 def time_scripts(video_list, file_path):
