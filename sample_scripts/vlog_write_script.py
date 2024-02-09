@@ -8,7 +8,7 @@ from diffusers import StableDiffusionPipeline
 
 story="In a bustling coffee shop, Alice, a young woman with blonde hair and a green apron, prepared to brew coffee. She approached the sleek, silver coffee machine, its buttons gleaming under the shop's warm lights. With practiced ease, she selected the finest beans and filled the grinder, the aroma filling the air. As the machine whirred to life, customers eagerly awaited their favorite brews. With each cup poured, the atmosphere buzzed with caffeine-fueled chatter and the aroma of freshly brewed coffee. Alice's skillful hands and the dependable machine transformed the shop into a haven for coffee lovers, one cup at a time."
 def ExtractProtagonist(story, file_path):
-    answer='[
+    answer='''[
     {
         "id": 1,
         "name": "Alice",
@@ -19,7 +19,7 @@ def ExtractProtagonist(story, file_path):
         "name": "Coffee Shop",
         "description": "Bustling with warm lights and a sleek, silver coffee machine."
     }
-    ]'
+    ]'''
     f = open(file_path, "w")
     f.write(answer)
     f.close()
@@ -29,13 +29,13 @@ def ExtractProtagonist(story, file_path):
     return protagonists_places_dict
 
 def ExtractAProtagonist(story, file_path):
-    answer='[
+    answer='''[
     {
         "id": 1,
         "name": "Alice",
         "description": "A young woman with blonde hair, wearing a green apron."
     }
-    ]'
+    ]'''
     protagonists_places_dict = {}
     protagonists_places_dict["Alice"] = "A young woman with blonde hair, wearing a green apron."
     f = open(file_path, "w")
@@ -56,7 +56,7 @@ def protagonist_place_reference1(video_list, character_places, file_path):
         key_list.append(str(i) + ". " + key)
         i += 1
     reference_list = []
-    answer='[
+    answer='''[
     {
         "video segment id": 1, 
         "character/place id": [2]
@@ -109,7 +109,7 @@ def protagonist_place_reference1(video_list, character_places, file_path):
         "video segment id": 13,
         "character/place id": [0]
     }
-    ]'
+    ]'''
     f = open(file_path, "w")
     f.write(answer)
     f.close()
@@ -136,7 +136,7 @@ def patch_story_scripts(story, video_list, file_path):
 
 
 def refine_story_scripts(video_list, file_path):
-    answer='[
+    answer='''[
     {
     "video fragment id": 1,
     "video fragment description": "Busy coffee shop scene."
@@ -189,7 +189,7 @@ def refine_story_scripts(video_list, file_path):
     "video fragment id": 13,
     "video fragment description": "Coffee machine hums."
     }
-    ]'
+    ]'''
     f = open(file_path, "w")
     f.write(answer)
     f.close()
@@ -208,7 +208,7 @@ def time_scripts(video_list, file_path):
                 prompt = str(num) + ". " + video
                 new_video_list.append(prompt)
                 num += 1
-            answer='[
+            answer='''[
             {
                 "video fragment id": 1,
                 "time": 3
@@ -261,7 +261,7 @@ def time_scripts(video_list, file_path):
                 "video fragment id": 13,
                 "time": 1
             }
-            ]
+            ]'''
             time_scripts = [{"video fragment id": 1,"time": 3},{"video fragment id": 2,"time": 3},{"video fragment id": 3,"time": 3},{"video fragment id": 4,"time": 1},{"video fragment id": 5,"time": 1},{"video fragment id": 6,"time": 1},
              {"video fragment id": 7,"time": 1},{"video fragment id": 8,"time": 1},{"video fragment id": 9,"time": 1},{"video fragment id": 10,"time": 1},{"video fragment id": 11,"time": 2},{"video fragment id": 12,"time": 1},{"video fragment id": 13,"time": 1}]
             time_list = []
