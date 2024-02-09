@@ -2,6 +2,7 @@ import torch
 import os
 os.environ['CURL_CA_BUNDLE'] = ''
 import argparse
+import ast
 from omegaconf import OmegaConf
 from diffusers import StableDiffusionPipeline
 #from diffusers import DiffusionPipeline
@@ -197,6 +198,77 @@ def refine_story_scripts(video_list, file_path):
                   "Alice pours coffee.", "Aroma intensifies.","Customers take first sips.","Satisfied expressions.","Final shot: Alice smiles.","Customer served.","Coffee machine hums."]
     return video_list
 
+def translate_video_script(video_list, file_path):
+    try_times = 5
+    for i in range(try_times):
+        try:
+            answer = '''[
+            {
+                "序号": 1,
+                "描述": "繁忙的咖啡店场景。",
+            },
+            {
+                "序号": 2,
+                "描述": "特写：爱丽丝的手。",
+            },
+            {
+                "序号": 3,
+                "描述": "磨豆机充满香气。",
+            },
+            {
+                "序号": 4,
+                "描述": "咖啡机嗡嗡作响。",
+            },
+            {
+                "序号": 5,
+                "描述": "蒸汽从机器中升起。",
+            },
+            {
+                "序号": 6,
+                "描述": "顾客等待订单。",
+            },
+            {
+                "序号": 7,
+                "描述": "爱丽丝倒咖啡。",
+            },
+            {
+                "序号": 8,
+                "描述": "香气加强。",
+            },
+            {
+                "序号": 9,
+                "描述": "顾客品尝第一口。",
+            },
+            {
+                "序号": 10,
+                "描述": "满意的表情。",
+            },
+            {
+                "序号": 11,
+                "描述": "最后镜头：爱丽丝微笑。",
+            },
+            {
+                "序号": 12,
+                "描述": "为顾客服务。",
+            },
+            {
+                "序号": 13,
+                "描述": "咖啡机嗡嗡作响。",
+            }
+            ]'''
+            f = open(file_path, "w")
+            f.write(answer)
+            f.close()
+            video_fragments = ast.literal_eval(answer)
+            zh_video_list = []
+            for video_fragment in video_fragments:
+                zh_video_list.append(video_fragment["描述"])
+            assert len(video_list) == len(zh_video_list)
+            return zh_video_list
+        except:
+            continue
+    assert len(video_list) == len(zh_video_list)
+    return zh_video_list
 
 def time_scripts(video_list, file_path):
     try_times = 3
