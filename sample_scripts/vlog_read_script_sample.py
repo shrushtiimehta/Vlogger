@@ -110,10 +110,13 @@ def readscript(script_file_path):
     return video_list
 
 
-def readzhscript(video_list,zh_file_path):
-    with open(zh_file_path, "r", encoding='utf-8') as f:
+def readzhscript(zh_file_path):
+    with open(zh_file_path, "r", encoding='utf-8') as f: 
         script = f.read()
-        video_list = video_list
+        video_fragments = ast.literal_eval(script)
+        video_list = []
+        for video_fragment in video_fragments:
+            video_list.append(video_fragment["描述"])
     return video_list
 
 
