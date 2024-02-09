@@ -10,7 +10,7 @@ script_file_path: "Vlogger/results/vlog/teddy_travel_/script/video_prompts.txt"
 zh_script_file_path: "Vlogger/results/vlog/teddy_travel_/script/zh_video_prompts.txt"
 protagonist_file_path: "Vlogger/results/vlog/teddy_travel_/script/protagonists_places.txt"
 reference_file_path: "Vlogger/results/vlog/teddy_travel_/script/protagonist_place_reference.txt"
-time_file_path: "Vlogger/results/vlog/teddy_travel/script_/time_scripts.txt"
+time_file_path: "Vlogger/results/vlog/teddy_travel_/script/time_scripts.txt"
 video_transition: False
 
 # model config:
