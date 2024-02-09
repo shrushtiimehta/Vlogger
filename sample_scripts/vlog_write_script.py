@@ -8,14 +8,39 @@ from diffusers import StableDiffusionPipeline
 
 story="In a bustling coffee shop, Alice, a young woman with blonde hair and a green apron, prepared to brew coffee. She approached the sleek, silver coffee machine, its buttons gleaming under the shop's warm lights. With practiced ease, she selected the finest beans and filled the grinder, the aroma filling the air. As the machine whirred to life, customers eagerly awaited their favorite brews. With each cup poured, the atmosphere buzzed with caffeine-fueled chatter and the aroma of freshly brewed coffee. Alice's skillful hands and the dependable machine transformed the shop into a haven for coffee lovers, one cup at a time."
 def ExtractProtagonist(story, file_path):
+    answer='[
+    {
+        "id": 1,
+        "name": "Alice",
+        "description": "A young woman with blonde hair, wearing a green apron."
+    },
+    {
+        "id": 2,
+        "name": "Coffee Shop",
+        "description": "Bustling with warm lights and a sleek, silver coffee machine."
+    }
+    ]'
+    f = open(file_path, "w")
+    f.write(answer)
+    f.close()
     protagonists_places_dict = {}
     protagonists_places_dict["Alice"] = "A young woman with blonde hair, wearing a green apron."
     protagonists_places_dict["Coffee Shop"] = "Bustling with warm lights and a sleek, silver coffee machine."
     return protagonists_places_dict
 
 def ExtractAProtagonist(story, file_path):
+    answer='[
+    {
+        "id": 1,
+        "name": "Alice",
+        "description": "A young woman with blonde hair, wearing a green apron."
+    }
+    ]'
     protagonists_places_dict = {}
     protagonists_places_dict["Alice"] = "A young woman with blonde hair, wearing a green apron."
+    f = open(file_path, "w")
+    f.write(answer)
+    f.close()
     return protagonists_places_dict
 
 def protagonist_place_reference1(video_list, character_places, file_path):
@@ -31,6 +56,63 @@ def protagonist_place_reference1(video_list, character_places, file_path):
         key_list.append(str(i) + ". " + key)
         i += 1
     reference_list = []
+    answer='[
+    {
+        "video segment id": 1, 
+        "character/place id": [2]
+    },
+    {
+        "video segment id": 2, 
+        "character/place id": [1]
+    },
+    {
+        "video segment id": 3, 
+        "character/place id": [0]
+    },
+    {
+        "video segment id": 4, 
+        "character/place id": [0]
+    },
+    {
+        "video segment id": 5, 
+        "character/place id": [0]
+    },
+    {
+        "video segment id": 6, 
+        "character/place id": [0]
+    },
+    {
+        "video segment id": 7,
+        "character/place id": [1]
+    },
+    {
+        "video segment id": 8,
+        "character/place id": [0]
+    },
+    {
+        "video segment id": 9,
+        "character/place id": [0]
+    },
+    {
+        "video segment id": 10,
+        "character/place id": [0]
+    },
+    {
+        "video segment id": 11,
+        "character/place id": [1]
+    },
+    {
+        "video segment id": 12,
+        "character/place id": [0]
+    },
+    {
+        "video segment id": 13,
+        "character/place id": [0]
+    }
+    ]'
+    f = open(file_path, "w")
+    f.write(answer)
+    f.close()
     protagonists_places_reference = [{"video segment id": 1, "character/place id": [2]},{"video segment id": 2, "character/place id": [1]},{"video segment id": 3, "character/place id": [0]},{"video segment id": 4, "character/place id": [0]},{"video segment id": 5, "character/place id": [0]},
                                  {"video segment id": 6, "character/place id": [0]},{"video segment id": 7,"character/place id": [1]},{"video segment id": 8,"character/place id": [0]},{"video segment id": 9,"character/place id": [0]},{"video segment id": 10,"character/place id": [0]},{"video segment id": 11,"character/place id": [1]},{"video segment id": 12,"character/place id": [0]},{"video segment id": 13,"character/place id": [0]}]
     for key, value in character_places.items():
@@ -54,6 +136,63 @@ def patch_story_scripts(story, video_list, file_path):
 
 
 def refine_story_scripts(video_list, file_path):
+    answer='[
+    {
+    "video fragment id": 1,
+    "video fragment description": "Busy coffee shop scene."
+    },
+    {
+    "video fragment id": 2,
+    "video fragment description": "Close-up: Alice's hands."
+    },
+    {
+    "video fragment id": 3,
+    "video fragment description": "Grinder fills with aroma."
+    },
+    {
+    "video fragment id": 4,
+    "video fragment description": "Coffee machine whirs."
+    },
+    {
+    "video fragment id": 5,
+    "video fragment description": "Steam rises from machine."
+    },
+    {
+    "video fragment id": 6,
+    "video fragment description": "Customers wait for orders."
+    },
+    {
+    "video fragment id": 7,
+    "video fragment description": "Alice pours coffee."
+    },
+    {
+    "video fragment id": 8,
+    "video fragment description": "Aroma intensifies."
+    },
+     {
+    "video fragment id": 9,
+    "video fragment description": "Customers take first sips."
+    },
+    {
+    "video fragment id": 10,
+    "video fragment description": "Satisfied expressions."
+    },
+    {
+    "video fragment id": 11,
+    "video fragment description": "Final shot: Alice smiles."
+    },
+    {
+    "video fragment id": 12,
+    "video fragment description": "Customer served."
+    },
+    {
+    "video fragment id": 13,
+    "video fragment description": "Coffee machine hums."
+    }
+    ]'
+    f = open(file_path, "w")
+    f.write(answer)
+    f.close()
     video_list = ["Busy coffee shop scene.","Close-up: Alice's hands.","Grinder fills with aroma.","Coffee machine whirs.","Steam rises from machine.","Customers wait for orders.",
                   "Alice pours coffee.", "Aroma intensifies.","Customers take first sips.","Satisfied expressions.","Final shot: Alice smiles.","Customer served.","Coffee machine hums."]
     return video_list
@@ -69,6 +208,60 @@ def time_scripts(video_list, file_path):
                 prompt = str(num) + ". " + video
                 new_video_list.append(prompt)
                 num += 1
+            answer='[
+            {
+                "video fragment id": 1,
+                "time": 3
+            },
+            {
+                "video fragment id": 2,
+                "time": 3
+            },
+            {
+                "video fragment id": 3,
+                "time": 3
+            },
+            {
+                "video fragment id": 4,
+                "time": 1
+            },
+            {
+                "video fragment id": 5,
+                "time": 1
+            },
+            {
+                "video fragment id": 6,
+                "time": 1
+            },
+            {
+                "video fragment id": 7,
+                "time": 1
+            },
+            {
+                "video fragment id": 8,
+                "time": 1
+            },
+            {
+                "video fragment id": 9,
+                "time": 1
+            },
+            {
+                "video fragment id": 10,
+                "time": 1
+            },
+            {
+                "video fragment id": 11,
+                "time": 2
+            },
+            {
+                "video fragment id": 12,
+                "time": 1
+            },
+            {
+                "video fragment id": 13,
+                "time": 1
+            }
+            ]
             time_scripts = [{"video fragment id": 1,"time": 3},{"video fragment id": 2,"time": 3},{"video fragment id": 3,"time": 3},{"video fragment id": 4,"time": 1},{"video fragment id": 5,"time": 1},{"video fragment id": 6,"time": 1},
              {"video fragment id": 7,"time": 1},{"video fragment id": 8,"time": 1},{"video fragment id": 9,"time": 1},{"video fragment id": 10,"time": 1},{"video fragment id": 11,"time": 2},{"video fragment id": 12,"time": 1},{"video fragment id": 13,"time": 1}]
             time_list = []
@@ -83,7 +276,10 @@ def time_scripts(video_list, file_path):
             continue
     assert len(time_list) == len(video_list)
     return time_list
-
+def translate_video_script(video_list, file_path):
+    continue
+    assert len(video_list) == len(zh_video_list)
+    return zh_video_list
 def readscript(script_file_path):
     with open(script_file_path, "r", encoding='utf-8') as f:
         script = f.read()
@@ -180,6 +376,11 @@ def main(args):
     reference_file_path = os.path.join(save_script_path, "protagonist_place_reference.txt")
     reference_lists = protagonist_place_reference1(video_list, character_places, reference_file_path)
     print("Reference protagonist OK", flush=True)
+    
+    # translate the English script to Chinese
+    zh_file_path = os.path.join(save_script_path, "zh_video_prompts.txt")
+    zh_video_list = translate_video_script(video_list, zh_file_path)
+    print("Translation OK", flush=True)
     
     # schedule the time of script
     time_file_path = os.path.join(save_script_path, "time_scripts.txt")
