@@ -5,7 +5,7 @@ image_encoder_path: "pretrained/CLIP-ViT-H-14-laion2B-s32B-b79K"
 save_path: "Vlogger/results/vlog/teddy_travel_/video"
 
 # script path
-reference_image_path: ["Vlogger/results/vlog/teddy_travel_/ref_img/teddy.jpg"]
+reference_image_path: ["Vlogger/results/vlog/teddy_travel_/ref_img/Alice.jpg","Vlogger/results/vlog/teddy_travel_/ref_img/CoffeeShop.jpg"]
 script_file_path: "Vlogger/results/vlog/teddy_travel_/script/video_prompts.txt"
 zh_script_file_path: "Vlogger/results/vlog/teddy_travel_/script/zh_video_prompts.txt"
 protagonist_file_path: "Vlogger/results/vlog/teddy_travel_/script/protagonists_places.txt"
